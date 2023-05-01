@@ -1,6 +1,6 @@
 {
     "name": "protonemedia/laravel-task-runner",
-    "description": "Write Bash scripts like Blade Components and run them locally or on a remote server",
+    "description": "Write Shell scripts like Blade Components and run them locally or on a remote server",
     "keywords": [
         "protonemedia",
         "laravel",

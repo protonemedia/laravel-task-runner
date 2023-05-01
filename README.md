@@ -1,6 +1,6 @@
 # Laravel Task Runner
 
-A package to write Bash scripts like Blade Components and run them locally or on a remote server. Support for running tasks in the background and test assertions. Built upon the [Process feature](https://laravel.com/docs/10.x/processes) in Laravel 10.
+A package to write Shell scripts like Blade Components and run them locally or on a remote server. Support for running tasks in the background and test assertions. Built upon the [Process feature](https://laravel.com/docs/10.x/processes) in Laravel 10.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/protonemedia/laravel-task-runner.svg?style=flat-square)](https://packagist.org/packages/protonemedia/laravel-task-runner)
 [![run-tests](https://github.com/protonemedia/laravel-task-runner/actions/workflows/run-tests.yml/badge.svg)](https://github.com/protonemedia/laravel-task-runner/actions/workflows/run-tests.yml)
