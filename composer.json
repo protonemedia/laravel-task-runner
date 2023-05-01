@@ -1,0 +1,70 @@
+{
+    "name": "protonemedia/laravel-task-runner",
+    "description": "Write Bash scripts like Blade Components and run them locally or on a remote server",
+    "keywords": [
+        "protonemedia",
+        "laravel",
+        "laravel-task-runner"
+    ],
+    "homepage": "https://github.com/protonemedia/laravel-task-runner",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pascal Baljet",
+            "email": "pascal@protone.media",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1|^8.2",
+        "illuminate/process": "^10.0",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "spatie/temporary-directory": "^2.1"
+    },
+    "conflict": {
+        "nesbot/carbon": "<2.63"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ProtoneMedia\\LaravelTaskRunner\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ProtoneMedia\\LaravelTaskRunner\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ProtoneMedia\\LaravelTaskRunner\\ServiceProvider"
+            ],
+            "aliases": {
+                "TaskRunner": "ProtoneMedia\\LaravelTaskRunner\\Facades\\TaskRunner"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,9 @@
+<?php
+
+namespace {{ namespace }};
+
+use ProtoneMedia\LaravelTaskRunner\Task;
+
+class {{ class }} extends Task
+{
+}
