@@ -157,10 +157,20 @@ abstract class Task
     }
 
     /**
+     * Returns a new PendingTask with this task.
+     *
+     * @return \ProtoneMedia\LaravelTaskRunner\PendingTask
+     */
+    public static function make(...$arguments): PendingTask
+    {
+        return (new static(...$arguments))->pending();
+    }
+
+    /**
      * Helper methods to create a new PendingTask.
      */
     public static function __callStatic($name, $arguments)
     {
-        return app(static::class)->pending()->{$name}(...$arguments);
+        return (new static)->pending()->{$name}(...$arguments);
     }
 }

@@ -5,6 +5,7 @@ namespace ProtoneMedia\LaravelTaskRunner\Tests;
 use Illuminate\Support\Facades\View;
 use Mockery;
 use ProtoneMedia\LaravelTaskRunner\Connection;
+use ProtoneMedia\LaravelTaskRunner\PendingTask;
 
 it('can generate defaults based on the class name and configuration', function () {
     $task = new DemoTask;
@@ -58,6 +59,13 @@ it('renders the view with the data', function () {
     View::addLocation(__DIR__.'/views');
 
     expect($task->getScript())->toBe('baz foo bar');
+});
+
+it('has a helper method to create the task fluently', function () {
+    $task = CustomTask::make('otherData');
+
+    expect($task)->toBeInstanceOf(PendingTask::class);
+    expect($task->task->someData)->toBe('otherData');
 });
 
 it('can create a pending task with a static method', function () {

@@ -104,8 +104,16 @@ class GetFile extends Task
 }
 ```
 
+Blade template:
+
 ```blade
 cat {{ $options() }} {{ $path }}
+```
+
+You can create a new instance of the Task using the static `make()` method:
+
+```php
+GetFile::make('/etc/hosts')->dispatch();
 ```
 
 ## Task options

@@ -14,6 +14,11 @@ class CustomTask extends Task
 
     public $someData = 'foo';
 
+    public function __construct($someData = 'foo')
+    {
+        $this->someData = $someData;
+    }
+
     public function someMethod()
     {
         return 'bar';
