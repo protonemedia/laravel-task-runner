@@ -28,7 +28,7 @@ composer require protonemedia/laravel-task-runner
 Optionally, you can publish the config file with:
 
 ```bash
-php artisan vendor:publish --provider="\ProtoneMedia\LaravelTaskRunner\ServiceProvider"
+php artisan vendor:publish --provider="ProtoneMedia\LaravelTaskRunner\ServiceProvider"
 ```
 
 ## Basic usage
