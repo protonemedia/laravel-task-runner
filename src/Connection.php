@@ -88,7 +88,7 @@ class Connection
 
         $privateKey = $config['private_key'] ?? null;
 
-        if(is_callable($privateKey)) {
+        if (is_callable($privateKey)) {
             $privateKey = $privateKey();
         }
 

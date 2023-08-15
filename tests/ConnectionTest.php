@@ -8,7 +8,7 @@ function addConnectionToConfig()
         'host' => '1.1.1.1',
         'port' => '21',
         'username' => 'root',
-        'private_key' => fn() => 'secret',
+        'private_key' => fn () => 'secret',
         'passphrase' => 'password',
         'script_path' => '',
     ]]);

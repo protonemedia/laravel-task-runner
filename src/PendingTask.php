@@ -107,7 +107,7 @@ class PendingTask
     /**
      * Sets the 'id' property.
      */
-    public function id(?string $id = null): self
+    public function id(string $id = null): self
     {
         $this->id = $id;
 
@@ -133,7 +133,7 @@ class PendingTask
     /**
      * Sets the 'outputPath' property.
      */
-    public function writeOutputTo(?string $outputPath = null): self
+    public function writeOutputTo(string $outputPath = null): self
     {
         $this->outputPath = $outputPath;
 
