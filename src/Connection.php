@@ -86,11 +86,17 @@ class Connection
                 : "/home/{$username}/.laravel-task-runner";
         }
 
+        $privateKey = $config['private_key'] ?? null;
+
+        if(is_callable($privateKey)) {
+            $privateKey = $privateKey();
+        }
+
         return new static(
             host: $config['host'] ?: null,
             port: $config['port'] ?: null,
             username: $username ?: null,
-            privateKey: $config['private_key'] ?? null,
+            privateKey: $privateKey,
             scriptPath: $scriptPath,
             proxyJump: $config['proxy_jump'] ?? null,
         );

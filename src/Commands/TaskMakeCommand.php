@@ -19,6 +19,13 @@ class TaskMakeCommand extends GeneratorCommand
     protected $name = 'make:task';
 
     /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = 'Task';
+
+    /**
      * The name of the console command.
      *
      * This name is used to identify the command during lazy loading.
