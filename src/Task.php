@@ -38,8 +38,6 @@ abstract class Task
 
     /**
      * Returns the timeout of the task in seconds.
-     *
-     * @return int
      */
     public function getTimeout(): ?int
     {
@@ -148,8 +146,6 @@ abstract class Task
 
     /**
      * Returns a new PendingTask with this task.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\PendingTask
      */
     public function pending(): PendingTask
     {
@@ -158,8 +154,6 @@ abstract class Task
 
     /**
      * Returns a new PendingTask with this task.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\PendingTask
      */
     public static function make(...$arguments): PendingTask
     {

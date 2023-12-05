@@ -7,10 +7,25 @@ use Illuminate\Support\Str;
 
 class RemoteProcessRunner
 {
+    /**
+     * @var callable|null
+     */
+    private $onOutput = null;
+
     public function __construct(
         private Connection $connection,
         private ProcessRunner $processRunner
     ) {
+    }
+
+    /**
+     * A PHP callback to run whenever there is some output available on STDOUT or STDERR.
+     */
+    public function onOutput(callable $callback): self
+    {
+        $this->onOutput = $callback;
+
+        return $this;
     }
 
     /**
@@ -61,8 +76,6 @@ class RemoteProcessRunner
 
     /**
      * Formats the script and output paths, and runs the script.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\ProcessOutput
      */
     public function runUploadedScript(string $script, string $output, int $timeout = 0): ProcessOutput
     {
@@ -74,8 +87,6 @@ class RemoteProcessRunner
 
     /**
      * Formats the script and output paths, and runs the script in the background.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\ProcessOutput
      */
     public function runUploadedScriptInBackground(string $script, string $output, int $timeout = 0): ProcessOutput
     {
@@ -90,8 +101,6 @@ class RemoteProcessRunner
 
     /**
      * Wraps the script in a bash subshell command, and runs it over SSH.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\ProcessOutput
      */
     private function run(string $script, int $timeout = 0): ProcessOutput
     {
@@ -104,7 +113,8 @@ class RemoteProcessRunner
         ]);
 
         $output = $this->processRunner->run(
-            FacadesProcess::command($command)->timeout($timeout > 0 ? $timeout : null)
+            FacadesProcess::command($command)->timeout($timeout > 0 ? $timeout : null),
+            $this->onOutput
         );
 
         return $this->cleanupOutput($output);
@@ -112,9 +122,6 @@ class RemoteProcessRunner
 
     /**
      * Removes the known hosts warning from the output.
-     *
-     * @param  \ProtoneMedia\LaravelTaskRunner\ProcessOutput  $processOutput
-     * @return \ProtoneMedia\LaravelTaskRunner\ProcessOutput
      */
     private function cleanupOutput(ProcessOutput $processOutput): ProcessOutput
     {

@@ -28,8 +28,6 @@ class TaskDispatcher
 
     /**
      * Runs the given task.
-     *
-     * @return null|\ProtoneMedia\LaravelTaskRunner\ProcessOutput
      */
     public function run(PendingTask $pendingTask): ?ProcessOutput
     {
@@ -79,8 +77,6 @@ class TaskDispatcher
 
     /**
      * Runs the given task on the given connection.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\ProcessOutput
      */
     private function runOnConnection(PendingTask $pendingTask): ProcessOutput
     {
@@ -89,6 +85,10 @@ class TaskDispatcher
             RemoteProcessRunner::class,
             ['connection' => $pendingTask->getConnection(), 'processRunner' => $this->processRunner]
         );
+
+        if ($outputCallbable = $pendingTask->getOnOutput()) {
+            $runner->onOutput($outputCallbable);
+        }
 
         $id = $pendingTask->getId() ?: Str::random(32);
 

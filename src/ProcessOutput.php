@@ -15,6 +15,21 @@ class ProcessOutput
     private ?ProcessResult $illuminateResult = null;
 
     /**
+     * @var callable|null
+     */
+    private $onOutput = null;
+
+    /**
+     * A PHP callback to run whenever there is some output available on STDOUT or STDERR.
+     */
+    public function onOutput(callable $callback): self
+    {
+        $this->onOutput = $callback;
+
+        return $this;
+    }
+
+    /**
      * Appends the buffer to the output.
      *
      * @param  string  $buffer
@@ -23,6 +38,10 @@ class ProcessOutput
     public function __invoke(string $type, $buffer)
     {
         $this->buffer .= $buffer;
+
+        if ($this->onOutput) {
+            ($this->onOutput)($type, $buffer);
+        }
     }
 
     /**

@@ -9,12 +9,16 @@ class ProcessRunner
 {
     /**
      * Runs the given process and waits for it to finish.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\ProcessOutput
      */
-    public function run(PendingProcess $process): ProcessOutput
+    public function run(PendingProcess $process, callable $onOutput = null): ProcessOutput
     {
-        return tap(new ProcessOutput, function (ProcessOutput $output) use ($process) {
+        $output = new ProcessOutput;
+
+        if ($onOutput) {
+            $output->onOutput($onOutput);
+        }
+
+        return tap($output, function (ProcessOutput $output) use ($process) {
             $timeout = false;
 
             try {

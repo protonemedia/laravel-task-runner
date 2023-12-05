@@ -40,8 +40,6 @@ class Connection
 
     /**
      * Checks if the given connection is the same as this one.
-     *
-     * @param  \ProtoneMedia\LaravelTaskRunner\Connection  $connection
      */
     public function is(Connection $connection): bool
     {

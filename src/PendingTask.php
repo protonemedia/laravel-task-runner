@@ -19,6 +19,11 @@ class PendingTask
 
     private ?string $outputPath = null;
 
+    /**
+     * @var callable|null
+     */
+    private $onOutput = null;
+
     public function __construct(
         public readonly Task $task
     ) {
@@ -37,9 +42,25 @@ class PendingTask
     }
 
     /**
+     * A PHP callback to run whenever there is some output available on STDOUT or STDERR.
+     */
+    public function onOutput(callable $callback): self
+    {
+        $this->onOutput = $callback;
+
+        return $this;
+    }
+
+    /**
+     * Returns the callback that should be run whenever there is some output available on STDOUT or STDERR.
+     */
+    public function getOnOutput(): ?callable
+    {
+        return $this->onOutput;
+    }
+
+    /**
      * Returns the connection, if set.
-     *
-     * @return \ProtoneMedia\LaravelTaskRunner\Connection|null
      */
     public function getConnection(): ?Connection
     {
@@ -48,8 +69,6 @@ class PendingTask
 
     /**
      * Setter for the connection.
-     *
-     * @param  string|\ProtoneMedia\LaravelTaskRunner\Connection  $connection
      */
     public function onConnection(string|Connection $connection): self
     {
@@ -142,8 +161,6 @@ class PendingTask
 
     /**
      * Checks if the given connection is the same as the connection of this task.
-     *
-     * @param  bool|string|\ProtoneMedia\LaravelTaskRunner\Connection|callable|null  $connection
      */
     public function shouldRunOnConnection(bool|string|Connection|callable $connection = null): bool
     {
@@ -189,9 +206,6 @@ class PendingTask
 
     /**
      * Dispatches the task to the given task runner.
-     *
-     * @param  \ProtoneMedia\LaravelTaskRunner\TaskDispatcher|null  $taskDispatcher
-     * @return \ProtoneMedia\LaravelTaskRunner\ProcessOutput|null
      */
     public function dispatch(TaskDispatcher $taskDispatcher = null): ?ProcessOutput
     {
