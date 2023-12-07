@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-task-runner` will be documented in this file.
 
+## 1.2.0 - 2023-12-07
+
+* Support for private key path
+
 ## 1.1.0 - 2023-08-15
 
 - Support for resolving private key from callable
