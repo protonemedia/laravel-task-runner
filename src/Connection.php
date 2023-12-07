@@ -90,6 +90,10 @@ class Connection
             $privateKey = $privateKey();
         }
 
+        if (! $privateKey && array_key_exists('private_key_path', $config)) {
+            $privateKey = file_get_contents($config['private_key_path']);
+        }
+
         return new static(
             host: $config['host'] ?: null,
             port: $config['port'] ?: null,

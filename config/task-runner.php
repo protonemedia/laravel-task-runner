@@ -14,6 +14,7 @@ return [
         //     'port' => '',
         //     'username' => '',
         //     'private_key' => '',
+        //     'private_key_path' => '',
         //     'passphrase' => '',
         //     'script_path' => '',
         // ],

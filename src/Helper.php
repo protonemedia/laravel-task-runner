@@ -44,7 +44,7 @@ class Helper
     /**
      * Use the nohup command to run a script in the background.
      */
-    public static function scriptInBackground(string $scriptPath, string $outputPath = null, int $timeout = null): string
+    public static function scriptInBackground(string $scriptPath, ?string $outputPath = null, ?int $timeout = null): string
     {
         $outputPath = $outputPath ?: '/dev/null';
 

@@ -7,7 +7,7 @@ use ReflectionFunction;
 
 trait MakesTestAssertions
 {
-    public function assertDispatched(string|callable $taskClass, callable $additionalCallback = null): self
+    public function assertDispatched(string|callable $taskClass, ?callable $additionalCallback = null): self
     {
         $faked = $this->faked($this->makeAssertCallback($taskClass, $additionalCallback));
 
@@ -19,7 +19,7 @@ trait MakesTestAssertions
         return $this;
     }
 
-    public function assertNotDispatched(string|callable $taskClass, callable $additionalCallback = null): self
+    public function assertNotDispatched(string|callable $taskClass, ?callable $additionalCallback = null): self
     {
         $faked = $this->faked($this->makeAssertCallback($taskClass, $additionalCallback));
 
@@ -31,7 +31,7 @@ trait MakesTestAssertions
         return $this;
     }
 
-    public function assertDispatchedTimes(string|callable $taskClass, int $times = 1, callable $additionalCallback = null): self
+    public function assertDispatchedTimes(string|callable $taskClass, int $times = 1, ?callable $additionalCallback = null): self
     {
         $count = $this->faked($this->makeAssertCallback($taskClass, $additionalCallback))->count();
 
@@ -44,7 +44,7 @@ trait MakesTestAssertions
         return $this;
     }
 
-    protected function typeNameOfFirstParameter(callable $callback = null): ?string
+    protected function typeNameOfFirstParameter(?callable $callback = null): ?string
     {
         if (! $callback) {
             return null;
@@ -61,14 +61,14 @@ trait MakesTestAssertions
         return $parameters[0]?->getType()?->getName() ?: null;
     }
 
-    protected function callbackExpectsPendingTask(callable $callback = null): bool
+    protected function callbackExpectsPendingTask(?callable $callback = null): bool
     {
         $typeName = $this->typeNameOfFirstParameter($callback);
 
         return ! $typeName || $typeName === PendingTask::class;
     }
 
-    protected function makeAssertCallback(string|callable $taskClass, callable $additionalCallback = null)
+    protected function makeAssertCallback(string|callable $taskClass, ?callable $additionalCallback = null)
     {
         if (! $additionalCallback) {
             $additionalCallback = fn () => true;

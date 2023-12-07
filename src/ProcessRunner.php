@@ -10,7 +10,7 @@ class ProcessRunner
     /**
      * Runs the given process and waits for it to finish.
      */
-    public function run(PendingProcess $process, callable $onOutput = null): ProcessOutput
+    public function run(PendingProcess $process, ?callable $onOutput = null): ProcessOutput
     {
         $output = new ProcessOutput;
 

@@ -126,7 +126,7 @@ class PendingTask
     /**
      * Sets the 'id' property.
      */
-    public function id(string $id = null): self
+    public function id(?string $id = null): self
     {
         $this->id = $id;
 
@@ -152,7 +152,7 @@ class PendingTask
     /**
      * Sets the 'outputPath' property.
      */
-    public function writeOutputTo(string $outputPath = null): self
+    public function writeOutputTo(?string $outputPath = null): self
     {
         $this->outputPath = $outputPath;
 
@@ -162,7 +162,7 @@ class PendingTask
     /**
      * Checks if the given connection is the same as the connection of this task.
      */
-    public function shouldRunOnConnection(bool|string|Connection|callable $connection = null): bool
+    public function shouldRunOnConnection(bool|string|Connection|callable|null $connection = null): bool
     {
         if ($connection === null && $this->connection !== null) {
             return true;
@@ -207,7 +207,7 @@ class PendingTask
     /**
      * Dispatches the task to the given task runner.
      */
-    public function dispatch(TaskDispatcher $taskDispatcher = null): ?ProcessOutput
+    public function dispatch(?TaskDispatcher $taskDispatcher = null): ?ProcessOutput
     {
         /** @var TaskDispatcher */
         $taskDispatcher = $taskDispatcher ?: app(TaskDispatcher::class);

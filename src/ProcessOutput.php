@@ -108,7 +108,7 @@ class ProcessOutput
     /**
      * Setter for the exit code.
      */
-    public function setExitCode(int $exitCode = null): self
+    public function setExitCode(?int $exitCode = null): self
     {
         $this->exitCode = $exitCode;
 
