@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-task-runner` will be documented in this file.
 
+## 1.3.0 - 2024-01-02
+
+### What's Changed
+
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/protonemedia/laravel-task-runner/pull/6
+* Support for PHP 8.3. by @pascalbaljet in https://github.com/protonemedia/laravel-task-runner/pull/8
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/protonemedia/laravel-task-runner/pull/7
+
+### New Contributors
+
+* @pascalbaljet made their first contribution in https://github.com/protonemedia/laravel-task-runner/pull/8
+
+**Full Changelog**: https://github.com/protonemedia/laravel-task-runner/compare/1.2.0...1.3.0
+
 ## 1.2.0 - 2023-12-07
 
 * Support for private key path
