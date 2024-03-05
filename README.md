@@ -17,13 +17,9 @@ A package to write Shell scripts like Blade Components and run them locally or o
 
 It's the *magic* of Inertia.js with the *simplicity* of Blade. [Splade](https://github.com/protonemedia/laravel-splade) provides a super easy way to build Single Page Applications using Blade templates. Besides that magic SPA-feeling, it comes with more than ten components to sparkle your app and make it interactive, all without ever leaving Blade.
 
-## Want to see this package in action?
-
-Check out [Eddy Server Management](https://github.com/protonemedia/eddy-server-management), our open-source solution for Server Provisioning and Zero-Downtime PHP Deployment!
-
 ## Installation
 
-This package requires Laravel 10 and PHP 8.1 or higher. You can install the package via composer:
+This package requires Laravel 10 and PHP 8.2 or higher. You can install the package via composer:
 
 ```bash
 composer require protonemedia/laravel-task-runner

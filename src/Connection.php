@@ -72,7 +72,7 @@ class Connection
     {
         $username = $config['username'] ?: '';
 
-        $scriptPath = $config['script_path'] ?: null;
+        $scriptPath = $config['script_path'] ?? null;
 
         if ($scriptPath) {
             $scriptPath = rtrim($scriptPath, '/');
@@ -90,11 +90,13 @@ class Connection
             $privateKey = $privateKey();
         }
 
-        if (! $privateKey && array_key_exists('private_key_path', $config)) {
-            $privateKey = file_get_contents($config['private_key_path']);
+        $privateKeyPath = $config['private_key_path'] ?? null;
+
+        if (! $privateKey && $privateKeyPath) {
+            $privateKey = file_get_contents($privateKeyPath);
         }
 
-        return new static(
+        $instance = new static(
             host: $config['host'] ?: null,
             port: $config['port'] ?: null,
             username: $username ?: null,
@@ -102,6 +104,22 @@ class Connection
             scriptPath: $scriptPath,
             proxyJump: $config['proxy_jump'] ?? null,
         );
+
+        if ($privateKeyPath) {
+            $instance->setPrivateKeyPath($privateKeyPath);
+        }
+
+        return $instance;
+    }
+
+    /**
+     * Sets the path to the private key.
+     */
+    public function setPrivateKeyPath(string $privateKeyPath): self
+    {
+        $this->privateKeyPath = $privateKeyPath;
+
+        return $this;
     }
 
     /**
