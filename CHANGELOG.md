@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-task-runner` will be documented in this file.
 
+## 1.4.0 - 2024-03-05
+
+* Connection config improvements
+* Laravel 11 support
+* Dropped PHP 8.1 support
+
 ## 1.3.0 - 2024-01-02
 
 ### What's Changed
