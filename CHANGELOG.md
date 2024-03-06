@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-task-runner` will be documented in this file.
 
+## 1.4.1 - 2024-03-06
+
+**Full Changelog**: https://github.com/protonemedia/laravel-task-runner/compare/1.4.0...1.4.1
+
 ## 1.4.0 - 2024-03-05
 
 * Connection config improvements
