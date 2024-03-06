@@ -28,7 +28,7 @@ class Helper
     public static function temporaryDirectory(): TemporaryDirectory
     {
         return tap(
-            TemporaryDirectory::make('' ?? config('task-runner.temporary_directory') ?: ''),
+            TemporaryDirectory::make(config('task-runner.temporary_directory') ?: ''),
             fn ($temporaryDirectory) => register_shutdown_function(fn () => $temporaryDirectory->delete())
         );
     }
