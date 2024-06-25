@@ -157,7 +157,7 @@ class RemoteProcessRunner
         ]);
 
         $output = $this->processRunner->run(
-            FacadesProcess::command($command)->timeout(config('task-runner.upload_timeout'))
+            FacadesProcess::command($command)->timeout(config('task-runner.upload_timeout', 10))
         );
 
         if ($output->isTimeout() || $output->getExitCode() !== 0) {
