@@ -141,6 +141,7 @@ class RemoteProcessRunner
      *
      * @param  string  $filename
      * @param  string  $contents
+     * @param  int  $timeout
      */
     public function upload($filename, $contents): self
     {
@@ -156,7 +157,7 @@ class RemoteProcessRunner
         ]);
 
         $output = $this->processRunner->run(
-            FacadesProcess::command($command)->timeout(10)
+            FacadesProcess::command($command)->timeout(config('task-runner.upload_timeout'))
         );
 
         if ($output->isTimeout() || $output->getExitCode() !== 0) {
