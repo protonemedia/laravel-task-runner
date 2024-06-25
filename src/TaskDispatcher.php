@@ -80,7 +80,7 @@ class TaskDispatcher
      */
     private function runOnConnection(PendingTask $pendingTask): ProcessOutput
     {
-        /** @var RemoteProcessRunner */
+        /** @var RemoteProcessRunner $runner */
         $runner = app()->makeWith(
             RemoteProcessRunner::class,
             ['connection' => $pendingTask->getConnection(), 'processRunner' => $this->processRunner]
