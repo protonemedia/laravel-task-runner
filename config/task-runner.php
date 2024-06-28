@@ -32,6 +32,6 @@ return [
         'storage_root' => storage_path('framework/testing/task-runner'),
     ],
 
-    // The default timeout for uploading script file to server in seconds
-    'upload_timeout' => 10,
+    // The connection timeout for connecting to a remote server in seconds.
+    'connection_timeout' => 10,
 ];

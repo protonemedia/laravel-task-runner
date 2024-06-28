@@ -60,7 +60,7 @@ class TaskDispatcher
     /**
      * Runs the given task in the background.
      *
-     * @return void
+     * @return ProcessOutput
      */
     private function runInBackground(PendingTask $pendingTask)
     {
@@ -71,7 +71,7 @@ class TaskDispatcher
         );
 
         return $this->processRunner->run(
-            FacadesProcess::command($command)->timeout(10)
+            FacadesProcess::command($command)->timeout(config('task-runner.connection_timeout', 10))
         );
     }
 
@@ -83,7 +83,7 @@ class TaskDispatcher
         /** @var RemoteProcessRunner $runner */
         $runner = app()->makeWith(
             RemoteProcessRunner::class,
-            ['connection' => $pendingTask->getConnection(), 'processRunner' => $this->processRunner]
+            ['connection' => $pendingTask->getConnection(), 'processRunner' => $this->processRunner, 'connectionTimeout' => config('task-runner.connection_timeout', 10)]
         );
 
         if ($outputCallbable = $pendingTask->getOnOutput()) {

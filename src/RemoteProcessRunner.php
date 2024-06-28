@@ -14,7 +14,8 @@ class RemoteProcessRunner
 
     public function __construct(
         private Connection $connection,
-        private ProcessRunner $processRunner
+        private ProcessRunner $processRunner,
+        private int $connectionTimeout = 10,
     ) {
     }
 
@@ -46,7 +47,7 @@ class RemoteProcessRunner
     {
         $output = $this->run(
             script: 'mkdir -p '.$this->connection->scriptPath,
-            timeout: 10
+            timeout: $this->connectionTimeout,
         );
 
         if ($output->isTimeout() || $output->getExitCode() !== 0) {
@@ -96,7 +97,7 @@ class RemoteProcessRunner
             timeout: $timeout,
         );
 
-        return $this->run($script, 10);
+        return $this->run($script, $this->connectionTimeout);
     }
 
     /**
@@ -157,7 +158,7 @@ class RemoteProcessRunner
         ]);
 
         $output = $this->processRunner->run(
-            FacadesProcess::command($command)->timeout(config('task-runner.upload_timeout', 10))
+            FacadesProcess::command($command)->timeout(config('task-runner.connection_timeout', 10))
         );
 
         if ($output->isTimeout() || $output->getExitCode() !== 0) {
