@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^8.2|^8.3",
+        "php": "^8.2|^8.3|^8.4",
         "illuminate/process": "^10.0|^11.0",
         "spatie/laravel-package-tools": "^1.13.0",
         "spatie/temporary-directory": "^2.1"
