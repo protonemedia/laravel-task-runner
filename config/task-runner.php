@@ -31,4 +31,7 @@ return [
         'enabled' => env('TASK_RUNNER_PERSISTENT_FAKE', false),
         'storage_root' => storage_path('framework/testing/task-runner'),
     ],
+
+    // The connection timeout for connecting to a remote server in seconds.
+    'connection_timeout' => 10,
 ];
