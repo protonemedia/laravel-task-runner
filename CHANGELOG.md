@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-task-runner` will be documented in this file.
 
+## 1.6.0 - 2025-02-23
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/protonemedia/laravel-task-runner/pull/17
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/protonemedia/laravel-task-runner/pull/18
+* Support for Laravel 12 by @pascalbaljet in https://github.com/protonemedia/laravel-task-runner/pull/19
+
+**Full Changelog**: https://github.com/protonemedia/laravel-task-runner/compare/1.5.0...1.6.0
+
 ## 1.5.0 - 2024-11-20
 
 ### What's Changed
