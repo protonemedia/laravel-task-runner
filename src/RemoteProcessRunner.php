@@ -15,7 +15,8 @@ class RemoteProcessRunner
     public function __construct(
         private Connection $connection,
         private ProcessRunner $processRunner
-    ) {}
+    ) {
+    }
 
     /**
      * A PHP callback to run whenever there is some output available on STDOUT or STDERR.

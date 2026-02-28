@@ -26,7 +26,8 @@ class PendingTask
 
     public function __construct(
         public readonly Task $task
-    ) {}
+    ) {
+    }
 
     /**
      * Wraps the given task in a PendingTask instance.
