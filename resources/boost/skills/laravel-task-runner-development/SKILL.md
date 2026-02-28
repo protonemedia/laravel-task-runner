@@ -1,6 +1,6 @@
 ---
 name: laravel-task-runner-development
-description: Application integration guidance for protonemedia/laravel-task-runner.
+description: Build and work with protonemedia/laravel-task-runner features including defining Task classes, dispatching scripts locally or via SSH, running tasks in the background, and testing with the TaskRunner facade.
 license: MIT
 metadata:
   author: ProtoneMedia
@@ -9,35 +9,81 @@ metadata:
 # Laravel Task Runner Development
 
 ## Overview
-Use `protonemedia/laravel-task-runner.` in a Laravel application.
+Use protonemedia/laravel-task-runner to define shell-script Tasks rendered via Blade templates or inline, dispatch them locally or over SSH, run them in the background, and assert dispatches in tests. Built on Laravel’s Process feature.
 
 ## When to Activate
-- Activate when adding, configuring, or using this package in application code (controllers, jobs, commands, tests, config, routes, Blade, etc.).
-- Activate when code references `protonemedia/laravel-task-runner.` classes, facades, config, or documented features.
+- Activate when working with shell-script Tasks, background dispatching, or remote SSH execution in Laravel.
+- Activate when code references `Task`, `TaskRunner`, `PendingTask`, `ProcessOutput`, or the `task-runner` config.
+- Activate when the user wants to create, dispatch, or test Tasks attached to shell scripts.
 
 ## Scope
-- In scope: documented public API usage, configuration, testing patterns, and common integration recipes.
+- In scope: creating Task classes, dispatching tasks, reading output, background execution, remote connections, testing with `TaskRunner::fake()`, configuration.
 - Out of scope: modifying this package’s internal source code unless the user explicitly says they are contributing to the package.
 
 ## Workflow
-1. Identify the task (install/setup, configuration, feature usage, debugging, tests, etc.).
+1. Identify the task (creating a Task class, dispatching, remote execution, testing, etc.).
 2. Read `references/laravel-task-runner-guide.md` and focus on the relevant section.
-3. Apply the documented patterns and keep examples minimal and Laravel-native.
+3. Apply the patterns from the reference, keeping code minimal and Laravel-native.
 
 ## Core Concepts
-- Prefer the patterns shown in the full documentation and reference.
-- Keep examples copy-pastable and aligned with typical Laravel conventions.
 
-## Do and Don't
+### Creating a Task
+Every Task extends `ProtoneMedia\LaravelTaskRunner\Task` and renders to a shell script:
+
+```php
+use ProtoneMedia\LaravelTaskRunner\Task;
+
+class ComposerGlobalUpdate extends Task
+{
+    public function render(): string
+    {
+        return ‘composer global update’;
+    }
+}
+```
+
+### Dispatching and Output
+```php
+$output = ComposerGlobalUpdate::dispatch();
+
+$output->isSuccessful();    // exit code === 0
+$output->getBuffer();       // raw output string
+$output->getLines();        // output as array
+```
+
+### Background Execution
+```php
+ComposerGlobalUpdate::inBackground()
+    ->writeOutputTo(storage_path(‘script.output’))
+    ->dispatch();
+```
+
+### Remote Connections
+```php
+ComposerGlobalUpdate::onConnection(‘production’)->dispatch();
+```
+
+### Testing
+```php
+use ProtoneMedia\LaravelTaskRunner\Facades\TaskRunner;
+
+TaskRunner::fake();
+// ... trigger code ...
+TaskRunner::assertDispatched(ComposerGlobalUpdate::class);
+```
+
+## Do and Don’t
 
 Do:
-- Follow the package’s documented installation and configuration steps.
-- Provide examples that compile in a typical Laravel project.
-- Call out relevant pitfalls (configuration, queues, filesystem, permissions, testing) when applicable.
+- Always extend `ProtoneMedia\LaravelTaskRunner\Task` for every task class.
+- Use `TaskRunner::fake()` and `assertDispatched()` to test task dispatches.
+- Use `writeOutputTo()` when running tasks in the background to capture output.
+- Use `make()` to pass constructor arguments when dispatching a parameterised Task.
 
-Don't:
-- Don't invent undocumented methods/options; stick to the docs and reference.
-- Don't suggest changing package internals unless the user explicitly wants to contribute upstream.
+Don’t:
+- Don’t expect a returned `ProcessOutput` from background tasks — use `writeOutputTo()`.
+- Don’t forget to configure SSH keys and paths before dispatching on a remote connection.
+- Don’t invent undocumented methods or options; stick to the reference guide.
 
 ## References
 - `references/laravel-task-runner-guide.md`
