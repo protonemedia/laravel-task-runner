@@ -22,7 +22,9 @@ class TaskDispatcher
 
     private array $dispatchedTasks = [];
 
-    public function __construct(private ProcessRunner $processRunner) {}
+    public function __construct(private ProcessRunner $processRunner)
+    {
+    }
 
     /**
      * Runs the given task.
