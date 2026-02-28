@@ -1,19 +1,15 @@
-# laravel-task-runner development guide
+# Laravel Task Runner Reference
 
-For full documentation, see the README: https://github.com/protonemedia/laravel-task-runner#readme
+Complete reference for `protonemedia/laravel-task-runner`. Full documentation: https://github.com/protonemedia/laravel-task-runner#readme
 
-## At a glance
-Write shell scripts like Blade components and run tasks locally or remotely, with background support and assertions (built on Laravel Process).
+## Start Here
+- README / docs: https://github.com/protonemedia/laravel-task-runner#readme
 
-## Local setup
-- Install dependencies: `composer install`
-- Keep the dev loop package-focused (avoid adding app-only scaffolding).
+## Notes for AI Assistants
+- Treat the README as the source of truth for the supported public API.
+- Keep changes backward-compatible unless the change is explicitly a breaking change.
 
 ## Testing
-- Run: `composer test` (preferred) or the repository’s configured test runner.
-- Add regression tests for bug fixes.
+- Run the repository test command (see README / composer scripts).
 
-## Notes & conventions
-- Execution safety matters: escaping/quoting and remote execution boundaries.
-- Prefer tests that assert rendered command lines and process results.
-- Keep the component/template API stable; it's the user-facing surface.
+For detailed usage examples and the full API surface, refer to the README.

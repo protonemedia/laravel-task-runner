@@ -1,14 +1,8 @@
-{{--
-  Laravel Boost guidelines (repository core)
+{{-- Laravel Task Runner Guidelines for AI Code Assistants --}}
+{{-- Source: https://github.com/protonemedia/laravel-task-runner --}}
+{{-- License: MIT | (c) ProtoneMedia --}}
 
-  This file intentionally stays small: it links this repository to its package-specific Boost skill.
---}}
+## Laravel Task Runner
 
-<section>
-    <h2>Repository development skill</h2>
-
-    <p>
-        When working on this repository, activate the <code>laravel-task-runner-development</code> skill.
-        It contains package-specific conventions, testing notes, and common pitfalls.
-    </p>
-</section>
+- Run and manage application tasks and job-like workflows.
+- Always activate the `laravel-task-runner-development` skill when making package-specific changes.
