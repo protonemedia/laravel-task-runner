@@ -1,5 +1,7 @@
 # Laravel Task Runner Reference
 
+Complete reference for `protonemedia/laravel-task-runner.`. Full documentation: https://github.com/protonemedia/laravel-task-runner#readme
+
 Complete reference for `protonemedia/laravel-task-runner`.
 
 Primary docs: https://github.com/protonemedia/laravel-task-runner#readme
