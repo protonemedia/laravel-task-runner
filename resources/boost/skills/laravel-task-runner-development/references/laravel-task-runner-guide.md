@@ -243,9 +243,3 @@ TaskRunner::preventStrayTasks();
 - **Background tasks:** don’t expect a returned `ProcessOutput`; use `writeOutputTo()`.
 - **Remote execution:** ensure keys/paths are configured; keep config key names stable.
 - **Template quoting:** remember you are generating shell scripts; quoting/escaping can be subtle.
-
-## Testing (package)
-
-```bash
-composer test
-```
