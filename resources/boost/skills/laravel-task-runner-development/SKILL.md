@@ -1,6 +1,6 @@
 ---
 name: laravel-task-runner-development
-description: Development guidance for protonemedia/laravel-task-runner. Run and manage application tasks and job-like workflows.
+description: Development guidance for protonemedia/laravel-task-runner (Task classes + Blade-like shell templates).
 license: MIT
 metadata:
   author: ProtoneMedia
@@ -9,18 +9,12 @@ metadata:
 
 # Laravel Task Runner Development
 
-## Overview
-Use this skill when changing package code, docs, tests, or release tooling for protonemedia/laravel-task-runner.
-
-## When to Activate
-- You are modifying code in this repository.
-- You are reviewing/triaging issues or PRs for this package.
-- You are preparing a release (version bump, tag, changelog).
+Use this skill when changing code/docs/tests in `protonemedia/laravel-task-runner`.
 
 ## Workflow
-1. Skim the README / docs to confirm the public contract.
-2. Read references/laravel-task-runner-guide.md for common patterns and pitfalls.
-3. Keep changes small, add/update tests when behavior changes, and avoid breaking API changes.
+1. Treat the README as the public contract (Task generation, dispatching, outputs, faking/assertions).
+2. Consult `references/laravel-task-runner-guide.md` for common patterns (background, remote, test fakes).
+3. Preserve chaining/return types and config key behavior.
 
-## References
+## Reference
 - references/laravel-task-runner-guide.md
