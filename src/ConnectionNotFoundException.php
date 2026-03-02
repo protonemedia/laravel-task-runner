@@ -4,4 +4,6 @@ namespace ProtoneMedia\LaravelTaskRunner;
 
 use Exception;
 
-class ConnectionNotFoundException extends Exception {}
+class ConnectionNotFoundException extends Exception
+{
+}
