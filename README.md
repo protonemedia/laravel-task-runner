@@ -15,7 +15,7 @@ A package to write Shell scripts like Blade Components and run them locally or o
 
 ## Installation
 
-This package requires Laravel 12 and PHP 8.2 or higher. You can install the package via composer:
+This package requires Laravel 12 and PHP 8.3 or higher. You can install the package via composer:
 
 ```bash
 composer require protonemedia/laravel-task-runner
