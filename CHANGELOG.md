@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-task-runner` will be documented in this file.
 
+## 1.8.0 - 2026-11-21
+
+### What's Changed
+
+* Add Inertia Modal link by @realpascalbotjet in https://github.com/protonemedia/laravel-task-runner/pull/28
+* Add PHP 8.6 and Laravel 13 support by @pascalbaljet in https://github.com/protonemedia/laravel-task-runner/pull/33
+
+**Full Changelog**: https://github.com/protonemedia/laravel-task-runner/compare/1.7.0...1.8.0
+
 ## 1.7.0 - 2026-02-17
 
 ### What's Changed
